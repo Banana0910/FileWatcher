@@ -190,7 +190,7 @@ namespace FileWatcher
         private void FileWatcher_Load(object sender, EventArgs e)
         {
             change_WatchersState(false);
-            if (!IsUserAdministrator()) warning_label.Text = "※ 관리자 권한으로 실행을 안하시면 일부 파일이 탐지가 안될 수 있습니다.";
+            if (!IsUserAdministrator()) warning_label.Text = "※ 관리자 권한이 아니면 일부 파일이 탐지 또는 실행이 안될 수 있습니다.";
             font_size_box.Text = log.Font.Size.ToString();
             ColumnHeader h = new ColumnHeader();
             h.Width = log.ClientSize.Width - SystemInformation.VerticalScrollBarWidth;
@@ -245,7 +245,7 @@ namespace FileWatcher
             ListViewItem lvi = log.SelectedItems[0];
             string oldpath = lvi.SubItems.Count > 4 ? $"\n변경 : {lvi.SubItems[4].Text}" : "";
             if (MessageBox.Show($"{lvi.SubItems[1].Text}에 {lvi.SubItems[2].Text}함\n원본 : {lvi.SubItems[3].Text}{oldpath}\n폴더를 여시겠습니까?", "파일 감시자", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                Process.Start("explorer.exe", $"/select,\"{Path.GetDirectoryName(lvi.SubItems[3].Text)}\"");
+                Process.Start("explorer.exe", $"/select,\"{lvi.SubItems[3].Text}\"");
         }
 
         private void FileWatcher_Click(object sender, EventArgs e) {

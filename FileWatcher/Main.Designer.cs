@@ -60,11 +60,11 @@ namespace FileWatcher
             this.mb_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.notificate = new System.Windows.Forms.NotifyIcon(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.alarm_check = new System.Windows.Forms.CheckBox();
             this.notificateMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.열기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.alarm_check = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.C_Watcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.D_Watcher)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -400,24 +400,6 @@ namespace FileWatcher
             this.notificate.BalloonTipClicked += new System.EventHandler(this.notificate_BalloonTipClicked);
             this.notificate.DoubleClick += new System.EventHandler(this.notificate_DoubleClick);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(682, 179);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(108, 1);
-            this.panel2.TabIndex = 17;
-            // 
-            // alarm_check
-            // 
-            this.alarm_check.AutoSize = true;
-            this.alarm_check.Location = new System.Drawing.Point(681, 191);
-            this.alarm_check.Name = "alarm_check";
-            this.alarm_check.Size = new System.Drawing.Size(107, 23);
-            this.alarm_check.TabIndex = 20;
-            this.alarm_check.Text = "감지시 알림";
-            this.alarm_check.UseVisualStyleBackColor = true;
-            // 
             // notificateMenu
             // 
             this.notificateMenu.BackColor = System.Drawing.Color.White;
@@ -442,6 +424,24 @@ namespace FileWatcher
             this.종료ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(682, 179);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(108, 1);
+            this.panel2.TabIndex = 17;
+            // 
+            // alarm_check
+            // 
+            this.alarm_check.AutoSize = true;
+            this.alarm_check.Location = new System.Drawing.Point(681, 191);
+            this.alarm_check.Name = "alarm_check";
+            this.alarm_check.Size = new System.Drawing.Size(107, 23);
+            this.alarm_check.TabIndex = 20;
+            this.alarm_check.Text = "감지시 알림";
+            this.alarm_check.UseVisualStyleBackColor = true;
             // 
             // FileWatcher
             // 

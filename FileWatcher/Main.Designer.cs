@@ -393,6 +393,7 @@ namespace FileWatcher
             // notificate
             // 
             this.notificate.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notificate.ContextMenuStrip = this.notificateMenu;
             this.notificate.Icon = ((System.Drawing.Icon)(resources.GetObject("notificate.Icon")));
             this.notificate.Text = "현재 파일 탐지 기능이 비활성화 되어있습니다";
             this.notificate.Visible = true;
@@ -426,19 +427,19 @@ namespace FileWatcher
             this.종료ToolStripMenuItem});
             this.notificateMenu.Name = "notificateMenu";
             this.notificateMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.notificateMenu.Size = new System.Drawing.Size(181, 70);
+            this.notificateMenu.Size = new System.Drawing.Size(99, 48);
             // 
             // 열기ToolStripMenuItem
             // 
             this.열기ToolStripMenuItem.Name = "열기ToolStripMenuItem";
-            this.열기ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.열기ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.열기ToolStripMenuItem.Text = "열기";
             this.열기ToolStripMenuItem.Click += new System.EventHandler(this.열기ToolStripMenuItem_Click);
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 

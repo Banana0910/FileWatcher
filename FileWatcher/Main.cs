@@ -38,7 +38,7 @@ namespace FileWatcher
                     if ((attr & FileAttributes.Directory) == FileAttributes.Directory) return false;
                     if (minsize_check.Checked) {
                         long length = new FileInfo(path).Length;
-                        long minsize = int.Parse(minsize_box.Text)*1048576;
+                        long minsize = (int)double.Parse(minsize_box.Text)*1048576;
                         if (length < minsize) return false;
                     }
                 } catch {
@@ -135,11 +135,13 @@ namespace FileWatcher
             {
                 change_WatchersState(true);
                 start_btn.Text = "감시 종료";
+                notificate.Text = "현재 파일 탐지 기능이 활성화 되어있습니다";
             }
             else
             {
                 change_WatchersState(false);
                 start_btn.Text = "감시 시작";
+                notificate.Text = "현재 파일 탐지 기능이 비활성화 되어있습니다";
             }
         }
         private void clear_btn_Click(object sender, EventArgs e)
@@ -243,37 +245,39 @@ namespace FileWatcher
             ListViewItem lvi = log.SelectedItems[0];
             string oldpath = lvi.SubItems.Count > 4 ? $"\n변경 : {lvi.SubItems[4].Text}" : "";
             if (MessageBox.Show($"{lvi.SubItems[1].Text}에 {lvi.SubItems[2].Text}함\n원본 : {lvi.SubItems[3].Text}{oldpath}\n폴더를 여시겠습니까?", "파일 감시자", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                Process.Start(Path.GetDirectoryName(lvi.SubItems[3].Text));
+                Process.Start("explorer.exe", $"/select,\"{Path.GetDirectoryName(lvi.SubItems[3].Text)}\"");
         }
 
-        private void FileWatcher_Click(object sender, EventArgs e)
-        {
+        private void FileWatcher_Click(object sender, EventArgs e) {
             minsize_box_Leave(sender, e);
         }
 
-        private void notificate_BalloonTipClicked(object sender, EventArgs e)
-        {
+        private void notificate_BalloonTipClicked(object sender, EventArgs e) {
+            this.Show();
+            this.Activate();
+        }
+
+        private void notificate_DoubleClick(object sender, EventArgs e) {
+            this.Show();
+            this.Activate();
+        }
+
+        private void 열기ToolStripMenuItem_Click(object sender, EventArgs e) {
             this.Show();
         }
 
-        private void notificate_DoubleClick(object sender, EventArgs e)
-        {
-            this.Show();
-        }
+        bool force_exit = false;
 
-        private void 열기ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Show();
-        }
-
-        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e) {
+            force_exit = true;
             Application.Exit();
         }
 
         private void FileWatcher_FormClosing(object sender, FormClosingEventArgs e) {
-            e.Cancel = true;
-            this.Hide();
+            if (!force_exit) {
+                e.Cancel = true;
+                this.Hide();
+            }
         }
 
     }
